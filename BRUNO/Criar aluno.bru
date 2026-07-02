@@ -1,0 +1,34 @@
+meta {
+  name: Criar aluno
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://sturdy-giggle-96wr4x4qr7r2pqv6-3000.app.github.dev/alunos
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nome": "João Teste",
+    "email": "joa10o@email.com",
+    "senhaHash": "hash_temporario_456",
+    "cidade": "Salinas"
+  }
+}
+
+tests {
+  test("deve retornar status 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+  
+  test("não deve retornar senhaHash", function() {
+    expect(res.getBody()).to.not.have.property('senhaHash');
+  });
+  
+  test("deve retornar o nome do aluno criado", function() {
+    expect(res.getBody().nome).to.equal('João Teste');
+  });
+}

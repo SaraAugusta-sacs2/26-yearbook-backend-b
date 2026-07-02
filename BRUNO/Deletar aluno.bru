@@ -1,0 +1,17 @@
+meta {
+  name: Deletar aluno
+  type: http
+  seq: 6
+}
+
+delete {
+  url: https://sturdy-giggle-96wr4x4qr7r2pqv6-3000.app.github.dev/alunos/13
+  body: none
+  auth: inherit
+}
+
+tests {
+  test("deve retornar status 204", function() {
+    expect(res.getStatus()).to.equal(204);
+  });
+}

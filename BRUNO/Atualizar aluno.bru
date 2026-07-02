@@ -1,0 +1,27 @@
+meta {
+  name: Atualizar aluno
+  type: http
+  seq: 5
+}
+
+put {
+  url: https://sturdy-giggle-96wr4x4qr7r2pqv6-3000.app.github.dev/alunos/13
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "cidade": "Montes Claros"
+  }
+}
+
+tests {
+  test("deve retornar status 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("não deve retornar senhaHash", function() {
+    expect(res.getBody()).to.not.have.property('senhaHash');
+  });
+}

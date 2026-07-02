@@ -81,12 +81,12 @@ export async function deletarAluno(req, res) {
 
   try{
     await prisma.aluno.delete({
-      where:{id: Number(id)},
-    })
-    res.status(204).end()
+      where:{ id: Number(id)},
+    });
+    res.status(204).end();
 
   }catch(erro){
 
-  res.status(404).json({erro:'Aluno não encontrado'})
+  res.status(404).json({erro:'Aluno não encontrado'});
 }
 }
